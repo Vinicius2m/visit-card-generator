@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { PluginAPI } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -40,6 +41,49 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: PluginAPI) {
+      addUtilities(newTypographyUtilities);
+    },
+  ],
+};
+
+const newTypographyUtilities = {
+  ".heading-grotesque-lg": {
+    "@apply font-headingGrotesque text-[40px] leading-[100%] font-black xl:text-[56px]":
+      {},
+  },
+  ".heading-grotesque-md": {
+    "@apply font-headingGrotesque text-[32px] leading-[100%] font-black xl:text-[40px]":
+      {},
+  },
+  ".heading-grotesque-sm": {
+    "@apply font-headingGrotesque text-[24px] leading-[100%] font-black xl:text-[32px]":
+      {},
+  },
+  ".heading-grotesque-xs": {
+    "@apply font-headingGrotesque text-[20px] leading-[100%] font-black xl:text-[24px]":
+      {},
+  },
+  ".heading-red-hat": {
+    "@apply font-headingRedHat text-[24px] leading-[100%] font-bold xl:text-[40px]":
+      {},
+  },
+  ".subtitle-sm": {
+    "@apply font-primary text-[16px] leading-[140%] font-normal xl:text-[20px]":
+      {},
+  },
+  ".subtitle-xs": {
+    "@apply font-primary text-[14px] leading-[120%] font-normal": {},
+  },
+  ".body-lg": {
+    "@apply font-primary text-[20px] leading-[150%] font-normal": {},
+  },
+  ".body-md": {
+    "@apply font-primary text-[16px] leading-[150%] font-normal": {},
+  },
+  ".body-sm": {
+    "@apply font-primary text-[14px] leading-[150%] font-normal": {},
+  },
 };
 export default config;
