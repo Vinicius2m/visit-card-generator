@@ -21,6 +21,7 @@ export default function Home() {
             alt=""
             quality={100}
             className="w-[82%] max-w-[470px]"
+            priority
           />
           <LandingPageForm />
         </div>

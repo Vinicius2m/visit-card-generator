@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Icon from "./Icon";
 
 type ButtonProps = {
   type?: "submit" | "reset" | "button";
@@ -10,87 +10,73 @@ type ButtonProps = {
   fontSize?: string;
   imageWidth?: number;
   imageHeight?: number;
-};
-
-const inlineStyleDisabled = {
-  WebkitMaskRepeat: "no-repeat",
-  maskRepeat: "no-repeat",
-  WebkitMaskPosition: "center",
-  maskPosition: "center",
-  WebkitMaskSize: "contain",
-  maskSize: "contain",
+  responsivePaddingY?: {
+    base?: string;
+    sm?: string;
+    md?: string;
+    lg?: string;
+    xl?: string;
+  };
+  responsiveFontSize?: {
+    base?: string;
+    sm?: string;
+    md?: string;
+    lg?: string;
+    xl?: string;
+  };
 };
 
 export default function Button({
   text,
-  type,
-  disabled,
+  type = "button",
+  disabled = false,
   iconStartSrc,
   iconEndSrc,
-  paddingY,
-  fontSize,
   imageHeight,
   imageWidth,
+  responsivePaddingY = {},
+  responsiveFontSize = {},
 }: ButtonProps) {
-  return disabled ? (
+  const commonStyles =
+    "relative w-full h-full flex items-center justify-center gap-2 px-6 font-bold uppercase";
+
+  const disabledStyles =
+    "border-transparent bg-[#E1E4E8] text-gray-400 border-[2px] after:btn-shadow-format after:absolute after:bottom-[-6.8px] after:left-[-2px] after:bg-gray-400";
+
+  const activeStyles =
+    "border-[2px] border-[black] bg-yellow-500 text-[black] after:btn-shadow-format after:absolute after:bottom-[-6.8px] after:left-[-2px] after:bg-[black] hover:border-transparent hover:bg-[#F8DCA0]";
+
+  return (
     <button
       type={type}
-      disabled
-      className="after:btn-shadow-format relative flex h-full w-full items-center justify-center gap-2 border-[2px] border-transparent bg-[#E1E4E8] px-6 py-3 text-sm font-extrabold uppercase text-gray-400 after:absolute after:bottom-[-6.8px] after:left-[-2px] after:bg-gray-400"
-      style={{
-        paddingTop: paddingY,
-        paddingBottom: paddingY,
-        fontSize: fontSize,
-      }}
+      disabled={disabled}
+      className={`${commonStyles} ${disabled ? disabledStyles : activeStyles} ${
+        responsivePaddingY.base || ""
+      } ${responsivePaddingY.sm ? `sm:${responsivePaddingY.sm}` : ""} ${
+        responsivePaddingY.md ? `md:${responsivePaddingY.md}` : ""
+      } ${responsivePaddingY.lg ? `lg:${responsivePaddingY.lg}` : ""} ${
+        responsivePaddingY.xl ? `xl:${responsivePaddingY.xl}` : ""
+      } ${responsiveFontSize.base || ""} ${
+        responsiveFontSize.sm ? `sm:${responsiveFontSize.sm}` : ""
+      } ${responsiveFontSize.md ? `md:${responsiveFontSize.md}` : ""} ${
+        responsiveFontSize.lg ? `lg:${responsiveFontSize.lg}` : ""
+      } ${responsiveFontSize.xl ? `xl:${responsiveFontSize.xl}` : ""}`}
     >
       {iconStartSrc && (
-        <div
-          className="bg-gray-400"
-          style={{
-            WebkitMaskImage: `url('${iconStartSrc}')`,
-            maskImage: `url('${iconStartSrc}')`,
-            width: imageWidth ?? 24,
-            height: imageHeight ?? 24,
-            ...inlineStyleDisabled,
-          }}
+        <Icon
+          src={iconStartSrc}
+          isDisabled={disabled}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
         />
       )}
       <p className="text-center">{text}</p>
       {iconEndSrc && (
-        <div
-          className="bg-gray-400"
-          style={{
-            WebkitMaskImage: `url('${iconEndSrc}')`,
-            maskImage: `url('${iconEndSrc}')`,
-            width: imageWidth ?? 24,
-            height: imageHeight ?? 24,
-            ...inlineStyleDisabled,
-          }}
-        />
-      )}
-    </button>
-  ) : (
-    <button
-      type={type}
-      className="after:btn-shadow-format relative flex items-center justify-center gap-2 border-[2px] border-[black] bg-yellow-500 px-6 py-3 font-bold uppercase text-[black] after:absolute after:bottom-[-6.8px] after:left-[-2px] after:bg-[black] hover:border-transparent hover:bg-[#F8DCA0]"
-    >
-      {iconStartSrc && (
-        <Image
-          src={iconStartSrc}
-          alt=""
-          width={24}
-          height={24}
-          className="h-6 w-6"
-        />
-      )}
-      <p>{text}</p>
-      {iconEndSrc && (
-        <Image
+        <Icon
           src={iconEndSrc}
-          alt=""
-          width={24}
-          height={24}
-          className="h-6 w-6"
+          isDisabled={disabled}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
         />
       )}
     </button>

@@ -40,7 +40,7 @@ export default function LandingPageForm() {
   return (
     <form
       onSubmit={handleSubmit(() => router.push("/result"))}
-      className="mt-12 flex h-full w-full max-w-[620px] flex-col items-center justify-center gap-6 md:m-0 md:items-stretch"
+      className="mt-12 flex h-full w-full max-w-[620px] flex-col items-center justify-center gap-6 md:m-0 md:items-stretch lg:gap-10"
     >
       <div className="flex w-full flex-col items-start gap-3">
         <label className="font-primary text-[14px] font-bold leading-[14px]">
@@ -123,12 +123,15 @@ export default function LandingPageForm() {
       <p className="self-start font-primary text-xs font-normal leading-[18px]">
         * Você pode alterar suas permissões de comunicação a qualquer tempo.
       </p>
-
-      <Button
-        text="Gerar CARTÃO Grátis"
-        iconEndSrc={ArrowRight.src}
-        type="submit"
-      />
+      <div className="h-[52px]">
+        <Button
+          text="Gerar CARTÃO Grátis"
+          iconEndSrc={ArrowRight.src}
+          type="submit"
+          responsiveFontSize={{ base: "text-[16px]" }}
+          responsivePaddingY={{ base: "py-3" }}
+        />
+      </div>
     </form>
   );
 }
