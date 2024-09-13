@@ -5,6 +5,8 @@ import {
   Darker_Grotesque,
   Red_Hat_Display,
 } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Gerador de cartão de visita",
@@ -45,7 +47,9 @@ export default function RootLayout({
           redHatDisplay.variable
         }
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

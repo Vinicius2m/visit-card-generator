@@ -58,11 +58,11 @@ const newTypographyUtilities = {
       {},
   },
   ".heading-grotesque-sm": {
-    "@apply font-headingGrotesque text-[24px] leading-[100%] font-black xl:text-[32px]":
+    "@apply font-headingGrotesque text-[24px] leading-[110%] font-black xl:text-[32px]":
       {},
   },
   ".heading-grotesque-xs": {
-    "@apply font-headingGrotesque text-[20px] leading-[100%] font-black xl:text-[24px]":
+    "@apply font-headingGrotesque text-[20px] leading-[110%] font-bold xl:text-[24px]":
       {},
   },
   ".heading-red-hat": {
