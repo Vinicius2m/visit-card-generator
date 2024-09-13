@@ -88,8 +88,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - Editor: **[Visual Studio Code](https://code.visualstudio.com/)**
 - Linters e Formatadores:
-- **[ESLint](https://eslint.org/)**
-- **[Prettier](https://prettier.io/)**
+      - **[ESLint](https://eslint.org/)**
+      - **[Prettier](https://prettier.io/)**
 - Fontes:
   - **[Nunito](https://fonts.google.com/specimen/Nunito)**
   - **[Darker Grotesque](https://fonts.google.com/specimen/Darker+Grotesque)**
