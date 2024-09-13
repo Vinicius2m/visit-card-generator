@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="flex h-14 items-center justify-between gap-4 bg-gray-200 px-5 py-4">
+    <footer className="flex h-14 items-center justify-between gap-4 bg-gray-200 px-5 py-4 md:justify-center md:gap-4">
       <a
         href="https://legal.rdstation.com/pt/privacy-policy/"
         target="_blank"

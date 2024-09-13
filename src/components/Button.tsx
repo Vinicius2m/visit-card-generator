@@ -72,7 +72,7 @@ export default function Button({
   ) : (
     <button
       type={type}
-      className="after:btn-shadow-format relative flex items-center justify-center gap-2 border-[2px] border-[black] bg-yellow-500 px-6 py-3 font-bold uppercase text-[black] after:absolute after:bottom-[-6.8px] after:left-[-2px] after:bg-[black] hover:bg-[#F8DCA0]"
+      className="after:btn-shadow-format relative flex items-center justify-center gap-2 border-[2px] border-[black] bg-yellow-500 px-6 py-3 font-bold uppercase text-[black] after:absolute after:bottom-[-6.8px] after:left-[-2px] after:bg-[black] hover:border-transparent hover:bg-[#F8DCA0]"
     >
       {iconStartSrc && (
         <Image
