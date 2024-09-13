@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LandingPageImg from "@/assets/landingpage.png";
+import LandingPageSvg from "@/assets/landingpage.svg";
 import LandingPageForm from "@/components/LandingPageForm";
 
 export default function Home() {
@@ -14,7 +14,12 @@ export default function Home() {
           </p>
         </div>
         <div className="mt-11 flex w-full flex-col items-center justify-center">
-          <Image src={LandingPageImg} alt="" className="w-[82%]" />
+          <Image
+            src={LandingPageSvg}
+            alt=""
+            quality={100}
+            className="w-[82%]"
+          />
           <LandingPageForm />
         </div>
       </main>

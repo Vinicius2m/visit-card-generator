@@ -2,29 +2,11 @@
 
 import Button from "@/components/Button";
 import ArrowRight from "@/assets/long-arrow-alt-right.svg";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { landingPageFormSchema } from "@/schemas/landingPageFormSchema";
 import InputMask, { BeforeMaskedStateChangeStates } from "react-input-mask";
-
-type FormValues = {
-  name: string;
-  email: string;
-  phone: string;
-};
+import { useFormContext } from "@/context/FormContext";
 
 export default function LandingPageForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({
-    resolver: yupResolver(landingPageFormSchema),
-  });
-
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
-  };
+  const { register, handleSubmit, errors, router } = useFormContext();
 
   const beforeMaskedValueChange = ({
     currentState,
@@ -45,6 +27,7 @@ export default function LandingPageForm() {
       cursorPosition += value.length - newValue.length;
     } else {
       value = newValue;
+      cursorPosition = newValue.length;
     }
 
     return {
@@ -56,7 +39,7 @@ export default function LandingPageForm() {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(() => router.push("/result"))}
       className="mt-12 flex w-full flex-col items-center justify-center gap-6"
     >
       <div className="flex w-full flex-col items-start gap-3">
@@ -65,7 +48,7 @@ export default function LandingPageForm() {
         </label>
         <input
           type="text"
-          placeholder={errors.name ? errors.name!.message : "Nome do cartão"}
+          placeholder={errors.name ? errors.name!.message : "Nome no cartão"}
           {...register("name")}
           className={
             errors.name
@@ -90,7 +73,6 @@ export default function LandingPageForm() {
           }
           {...register("phone")}
           beforeMaskedStateChange={beforeMaskedValueChange}
-          maskPlaceholder={null}
           className={
             errors.phone
               ? "w-full border-2 border-red-500 px-3 py-2 text-[black] placeholder-red-500 subtitle-xs"
@@ -135,13 +117,13 @@ export default function LandingPageForm() {
         </li>
       </ul>
 
-      <p className="text-start font-primary text-xs font-normal leading-[18px]">
+      <p className="self-start font-primary text-xs font-normal leading-[18px]">
         * Você pode alterar suas permissões de comunicação a qualquer tempo.
       </p>
 
       <Button
         text="Gerar CARTÃO Grátis"
-        iconEndSrc={ArrowRight}
+        iconEndSrc={ArrowRight.src}
         type="submit"
       />
     </form>
