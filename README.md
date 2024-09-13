@@ -47,7 +47,7 @@ ferramentas: [Git](https://git-scm.com) e [Node.js](https://nodejs.org/en/).
 ```bash
 
 # Clone este repositório
-$ git clone
+$ git clone https://github.com/Vinicius2m/visit-card-generator.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd visit-card-generator
